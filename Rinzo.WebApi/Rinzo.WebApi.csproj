@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>eb421d38-3bb0-4a30-809a-4b230c75a2b0</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Rinzo.Application\Rinzo.Application.csproj" />
+    <ProjectReference Include="..\Rinzo.Infrastructure\Rinzo.Infrastructure.csproj" />
+    <ProjectReference Include="..\Rinzo.Presentation\Rinzo.Presentation.csproj" />
+  </ItemGroup>
+
+</Project>
