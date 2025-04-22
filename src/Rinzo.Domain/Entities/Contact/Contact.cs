@@ -23,7 +23,7 @@ namespace Rinzo.Domain.Entities.Contact
         /// <param name="mailingAddress">Mailing address (value object)</param>
         private Contact(
             Guid id, 
-            string firstName, 
+            string? firstName, 
             string lastName, 
             string email, 
             string phoneNumber, 
@@ -43,7 +43,7 @@ namespace Rinzo.Domain.Entities.Contact
             SalutationType = salutationType;
             MailingAddress = mailingAddress;
         }
-        public string FirstName { get; private set; }
+        public string? FirstName { get; private set; }
         public string LastName { get; private set; }
         public string Email { get; private set; }   
         public string PhoneNumber { get; private set; }
