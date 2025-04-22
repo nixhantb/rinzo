@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rinzo.Domain.Entities
 {
-    internal class Deal
+    internal class Proposal
     {
     }
 }
