@@ -16,28 +16,10 @@ namespace Rinzo.Domain.Enums
         [Display(Name = "Unqualified")]
         Unqualified = 4,
 
-        [Display(Name = "Converted")]
-        Converted = 5,
-
-        [Display(Name = "Disqualified")]
-        Disqualified = 6,
-
-        [Display(Name = "Follow Up")]
-        FollowUp = 7,
-
-        [Display(Name = "Lost")]
-        Lost = 8,
-
         [Display(Name = "Nurturing")]
-        Nurturing = 9,
+        Nurturing = 5,
 
-        [Display(Name = "Recycled")]
-        Recycled = 10,
-
-        [Display(Name = "Archived")]
-        Archived = 11,
-
-        [Display(Name = "Closed")]
-        Closed = 12
+        [Display(Name = "Junk")]
+        Junk = 6
     }
 }
