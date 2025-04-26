@@ -36,9 +36,6 @@ namespace Rinzo.Domain.Entities.Lead
         public Guid LeadOwnerId { get; private set; }
         public LeadStatus Status { get; private set; }
 
-        
-        // convert to deal
-
        public void AddNote(Guid createdBy, string content)
         {
             var note = new NoteActivity(Guid.NewGuid(), Id, createdBy, content);
