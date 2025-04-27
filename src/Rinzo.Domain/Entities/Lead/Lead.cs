@@ -13,7 +13,6 @@ namespace Rinzo.Domain.Entities.Lead
         /// </summary>
         /// <param name="id">Unique identifier of the lead</param>
         /// <param name="Person">Person information</param>
-        /// <param name="lastName">Last name of the lead</param>
         /// <param name="email">Email address of the lead</param>
         /// <param name="phoneNumber">Phone number of the lead</param>
         private Lead(
