@@ -1,5 +1,6 @@
 ﻿using Rinzo.Domain.Enums;
 using Rinzo.Domain.Primitives;
+using Rinzo.Domain.ValueObjects;
 
 namespace Rinzo.Domain.Entities.Common
 {
@@ -14,7 +15,7 @@ namespace Rinzo.Domain.Entities.Common
         /// <param name="lastName">Last name of the person</param>
         /// <param name="email">Email address of the person</param>
         /// <param name="phoneNumber">Phone number of the person</param>
-        internal Person(Guid id, Salutation? salutationType, string? firstName, string lastName, string? email, string? phoneNumber) : base(id)
+        internal Person(Guid id, Salutation? salutationType, FirstName firstName, LastName lastName, string? email, string? phoneNumber) : base(id)
         {
             SalutationType = salutationType;
             FirstName = firstName;
@@ -24,12 +25,12 @@ namespace Rinzo.Domain.Entities.Common
         }
 
         public Salutation? SalutationType { get; private set; }
-        public string? FirstName { get; private set; }
-        public string LastName { get; private set; }
+        public FirstName FirstName { get; private set; }
+        public LastName LastName { get; private set; }
         public string? Email { get; private set; }
         public string? PhoneNumber { get; private set; }
 
-        public static Person CreatePerson(Salutation? salutationType, string? firstName, string lastName, string? email, string? phoneNumber)
+        public static Person CreatePerson(Salutation? salutationType, FirstName firstName, LastName lastName, string? email, string? phoneNumber)
         {
             return new Person(Guid.NewGuid(), salutationType, firstName, lastName, email, phoneNumber);
         }
