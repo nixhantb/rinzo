@@ -14,25 +14,25 @@ namespace Rinzo.Domain.Entities.Common
         /// <param name="firstName">First name of the person</param>
         /// <param name="lastName">Last name of the person</param>
         /// <param name="email">Email address of the person</param>
-        /// <param name="phoneNumber">Phone number of the person</param>
-        internal Person(Guid id, Salutation? salutationType, FirstName firstName, LastName lastName, string? email, string? phoneNumber) : base(id)
+        /// <param name="phone">Phone number of the person</param>
+        internal Person(Guid id, Salutation? salutationType, FirstName firstName, LastName lastName, Email email, Phone phone) : base(id)
         {
             SalutationType = salutationType;
             FirstName = firstName;
             LastName = lastName;
             Email = email;
-            PhoneNumber = phoneNumber;
+            Phone = phone;
         }
 
         public Salutation? SalutationType { get; private set; }
         public FirstName FirstName { get; private set; }
         public LastName LastName { get; private set; }
-        public string? Email { get; private set; }
-        public string? PhoneNumber { get; private set; }
+        public Email Email { get; private set; }
+        public Phone Phone { get; private set; }
 
-        public static Person CreatePerson(Salutation? salutationType, FirstName firstName, LastName lastName, string? email, string? phoneNumber)
+        public static Person CreatePerson(Salutation? salutationType, FirstName firstName, LastName lastName, Email email, Phone phone)
         {
-            return new Person(Guid.NewGuid(), salutationType, firstName, lastName, email, phoneNumber);
+            return new Person(Guid.NewGuid(), salutationType, firstName, lastName, email, phone);
         }
 
 
