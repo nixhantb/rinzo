@@ -1,9 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+
 namespace Rinzo.Domain.Enums
 {
     public enum LeadStatus
     {
+
+        [Display(Name = "Converted")]
+        Converted = 0,
         [Display(Name = "New")]
         New = 1,
 
@@ -21,5 +25,9 @@ namespace Rinzo.Domain.Enums
 
         [Display(Name = "Junk")]
         Junk = 6
+       
+
+
+
     }
 }

@@ -2,6 +2,7 @@
 using Rinzo.Domain.Entities.Contacts;
 using Rinzo.Domain.Enums;
 using Rinzo.Domain.Primitives;
+using Rinzo.Domain.Shared;
 
 
 namespace Rinzo.Domain.Entities.Lead
@@ -64,6 +65,61 @@ namespace Rinzo.Domain.Entities.Lead
 
             _activities.Add(taskActivity);
         }
+        /// <summary>
+        /// Converts the lead to a deal by creating a new contact.
+        /// </summary>
+        /// <param name="jobTitle"></param>
+        /// <param name="gender"></param>
+        /// <param name="mailingAddress"></param>
+        /// <returns>The newly created contact</returns>
+        public Result<Contact> ConvertToDeal(string jobTitle, Gender gender, Address mailingAddress)
+        {
+            if (Status == LeadStatus.Converted)
+            {
+                return Result.Failure<Contact>(
+                    new Error("Lead.AlreadyConverted", "Lead has already been converted to a deal.")
+                );
+            }
 
+            var contact = new Contact(
+                id: Guid.NewGuid(),
+                person: Person,
+                jobTitle: jobTitle,
+                organization: Organization,
+                genderType: gender,
+                mailingAddress: mailingAddress
+            );
+
+            // Update state
+            Status = LeadStatus.Converted;
+            UpdatedOn = DateTime.UtcNow;
+
+            var conversionActivity = new ConversionActivity(
+                id: Guid.NewGuid(),
+                leadId: Id,
+                createdBy: LeadOwnerId,
+                ContactId: contact.Id
+            );
+            // Add conversion activity to the lead
+            _activities.Add(conversionActivity);
+
+            return Result.Success(contact);
+        }
+
+        // Factory method for creating a new lead
+        public static Lead Create(
+            Person person,
+            Organization organization,
+            Contact leadOwner,
+            LeadStatus initialStatus = LeadStatus.New)
+        {
+            return new Lead(
+                id: Guid.NewGuid(),
+                person: person,
+                organization: organization,
+                leadOwner: leadOwner,
+                status: initialStatus
+            );
+        }
     }
 }
