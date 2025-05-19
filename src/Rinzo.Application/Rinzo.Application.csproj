@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Rinzo.Domain\Rinzo.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.5.0" />
+  </ItemGroup>
+
 </Project>
