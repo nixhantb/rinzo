@@ -4,6 +4,6 @@ namespace Rinzo.Domain.Repositories
 {
     public interface IContactRepository
     {
-        Task<Contact?> GetContactByIdAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<Contact?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
     }
 }
