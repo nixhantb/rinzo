@@ -6,6 +6,7 @@ namespace Rinzo.Domain.Repositories
     {
         Task<Lead?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
         void AddLead(Lead lead);
+        void UpdateLead(Lead lead);
     }
     
 }
