@@ -1,6 +1,5 @@
 ﻿using Rinzo.Domain.Entities.Lead;
 using Rinzo.Domain.Enums;
-
 internal class TaskActivity : LeadActivity
 {
     public TaskActivity(
@@ -35,6 +34,7 @@ internal class TaskActivity : LeadActivity
         DateTime createdOn)
     {
         return new TaskActivity(
+
             Guid.NewGuid(),
             title,
             description,
@@ -43,6 +43,7 @@ internal class TaskActivity : LeadActivity
             LeadActivityPriority.Low,
             leadId,
             createdBy
+
         );
     }
 }
