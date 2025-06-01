@@ -13,7 +13,7 @@ namespace Rinzo.Domain.Entities.Lead
         public IReadOnlyCollection<LeadActivity> Activities => _activities.AsReadOnly();
 
         /// <summary>
-        /// Private constructor used for controlled instantiation via factory methods or persistence.
+        /// Private constructor used for controlled instantiation via factory methods or persistence
         /// </summary>
         /// <param name="id">Unique identifier of the lead</param>
         /// <param name="personId">ID of the person</param>
