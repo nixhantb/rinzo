@@ -65,6 +65,21 @@ namespace Rinzo.Domain.Entities.Lead
 
             _activities.Add(taskActivity);
         }
+
+        private Result<Lead> MarkAsConverted()
+        {
+            if (Status == LeadStatus.Converted)
+            {
+                return Result.Failure<Lead>(
+                    new Error("Lead.AlreadyConverted", "Lead has already been converted to a deal.")
+                );
+            }
+
+            Status = LeadStatus.Converted;
+            UpdatedOn = DateTime.UtcNow;
+            return Result.Success(this);
+        }
+
         /// <summary>
         /// Converts the lead to a deal by creating a new contact.
         /// </summary>
@@ -90,9 +105,11 @@ namespace Rinzo.Domain.Entities.Lead
                 mailingAddress: mailingAddress
             );
 
-            // Update state
-            Status = LeadStatus.Converted;
-            UpdatedOn = DateTime.UtcNow;
+            var result = MarkAsConverted();
+            if(result.IsFailure)
+            {
+                return Result.Failure<Contact>(result.Error);
+            }
 
             var conversionActivity = new ConversionActivity(
                 id: Guid.NewGuid(),
