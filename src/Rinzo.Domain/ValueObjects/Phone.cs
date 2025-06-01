@@ -17,7 +17,7 @@ namespace Rinzo.Domain.ValueObjects
             {
                 return Result.Failure<Phone>(new Error("Phone.Empty", "Phone is Empty"));
             }
-            if (phone.Length > 20)
+            if (phone.Length > 10)
             {
                 return Result.Failure<Phone>(new Error("Phone.NameTooLong", "Phone is too long"));
             }
